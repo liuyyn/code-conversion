@@ -1,7 +1,7 @@
-from common.llm.base_llm_client import BaseLLMClient
+from lib.llm.base_llm_client import BaseLLMClient
 from langchain_cohere import ChatCohere
 from langchain_core.messages import HumanMessage, AnyMessage
-from common.config.llm_config import CohereLLMConfig
+from lib.config.llm_config import CohereLLMConfig
 
 
 class CohereLLMClient(BaseLLMClient):

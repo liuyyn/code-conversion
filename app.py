@@ -2,8 +2,8 @@ from typing import TypedDict, Annotated
 from langchain_core.messages import HumanMessage, SystemMessage, AnyMessage
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, START, END 
-from common.config.app_config import AppConfig
-from common.llm.cohere_llm_client import CohereLLMClient
+from lib.config.app_config import AppConfig
+from lib.llm.cohere_llm_client import CohereLLMClient
 
 app_config = AppConfig() # load the app config object
 llm = CohereLLMClient()
@@ -35,7 +35,8 @@ def read_file_step(state: CodeConversionAgentState):
     content = read_file(app_config.source_folder_path)
     human_message = HumanMessage(
         content=f"""
-    Convert the following Pro*C code into Python code.
+    Convert the following Pro*C code into Python code. Only generate Python code without additional explanation except for Python comments. 
+    
     {content}
     """)
 
@@ -50,7 +51,8 @@ def convert_code(state: CodeConversionAgentState):
     Your task is to convert the Pro*C code into equivalent Python code, preserving the logic and functionality of the original code. 
     Handle the embbeded SQL code by converting it into Apache Spark code in the Python language. 
     Handle the C/C++ code by converting it into Python code. 
-    Do not invente things. Think before you generate anything.                        
+    Assume the python environment is running on Databricks and that the tables the Pro*C are accessible in Databricks as delta tables.   
+    Do not invente things. Only generate Python code. You can add Python comments for clarity if needed but nothing else otherwise. 
     """
     )
     
