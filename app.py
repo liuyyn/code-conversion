@@ -4,6 +4,7 @@ from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, START, END 
 from lib.config.app_config import AppConfig
 from lib.llm.cohere_llm_client import CohereLLMClient
+from lib.parsers import CodeOutputParser, CodingLanguage
 
 app_config = AppConfig() # load the app config object
 llm = CohereLLMClient()
@@ -46,18 +47,18 @@ def convert_code(state: CodeConversionAgentState):
     print("converting code")
     system_message = SystemMessage(
         content="""
-    You are an AI assistant that helps convert Pro*C code into Python code. 
-    The Pro*C code will contain embedded SQL queries and C/C++ code.
-    Your task is to convert the Pro*C code into equivalent Python code, preserving the logic and functionality of the original code. 
-    Handle the embbeded SQL code by converting it into Apache Spark code in the Python language. 
-    Handle the C/C++ code by converting it into Python code. 
-    Assume the python environment is running on Databricks and that the tables the Pro*C are accessible in Databricks as delta tables.   
-    Do not invente things. Only generate Python code. You can add Python comments for clarity if needed but nothing else otherwise. 
-    """
+            You are an AI assistant that helps convert Pro*C code into Python code. 
+            The Pro*C code will contain embedded SQL queries and C/C++ code.
+            Your task is to convert the Pro*C code into equivalent Python code, preserving the logic and functionality of the original code. 
+            Handle the embbeded SQL code by converting it into Apache Spark code in the Python language. 
+            Handle the C/C++ code by converting it into Python code. 
+            Assume the python environment is running on Databricks and that the tables the Pro*C are accessible in Databricks as delta tables.   
+            Do not invente things. Only generate Python code. You can add Python comments for clarity if needed but nothing else otherwise. 
+            """
     )
     
     # convert code - the content of the code needed to convert should be in the messages 
-    converted_code = llm.invoke([system_message] + state["messages"])
+    converted_code = llm.invoke([system_message] + state["messages"], parser=CodeOutputParser(CodingLanguage.python))
 
     # write the converted code to the output folder 
     with open(app_config.target_folder_path, "w") as f: 
