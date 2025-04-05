@@ -1,3 +1,4 @@
 *.png
 .env
 /output
+/sample_proc
