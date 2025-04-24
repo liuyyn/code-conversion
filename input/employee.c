@@ -4,6 +4,7 @@
 #include <sqlca.h>
 #include <sqlcpr.h>
 
+
 /* Declare host variables */
 int emp_id;
 char emp_name[50];

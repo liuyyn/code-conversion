@@ -3,9 +3,10 @@
 #include <sqlca.h>
 #include <sqlcpr.h>  // Required for OCI runtime
 
+#include <empstructs.h> 
 /* External C functions from other modules */
-void connect_db();
-void process_employee(int id);
+// void connect_db();
+// void process_employee(int id);
 
 /* SQL Context */
 void *sqlctx;
