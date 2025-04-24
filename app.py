@@ -2,7 +2,7 @@ from typing import TypedDict, Annotated
 from langchain_core.messages import HumanMessage, SystemMessage, AnyMessage
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, START, END 
-from lib.config.app_config import AppConfig
+from lib.config.app_config import app_config
 from lib.llm.cohere_llm_client import CohereLLMClient
 from lib.output_parsers import CodeOutputParser
 

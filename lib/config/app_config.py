@@ -11,3 +11,6 @@ load_dotenv()
 class AppConfig:
     source_folder_path: str = field(default=os.environ["SOURCE_FOLDER_PATH"])
     target_folder_path: str = field(default=os.environ["TARGET_FOLDER_PATH"])
+    libclang_path: str = field(default=os.environ["LIBCLANG_PATH"])
+
+app_config = AppConfig() # load the app config object
