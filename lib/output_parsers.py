@@ -1,8 +1,6 @@
 from typing import TypedDict
 import re
-
-class CodingLanguage(TypedDict): 
-    python = "python" # maps to the output from the llm that wraps the code between 
+from lib.file import CodingLanguage 
 
 class CodeOutputParser:
 
