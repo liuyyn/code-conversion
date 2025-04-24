@@ -2,7 +2,7 @@ from lib.llm.base_llm_client import BaseLLMClient
 from langchain_cohere import ChatCohere
 from langchain_core.messages import HumanMessage, AnyMessage
 from lib.config.llm_config import CohereLLMConfig
-from lib.parsers import CodeOutputParser
+from lib.output_parsers import CodeOutputParser
 from typing import Optional
 
 
