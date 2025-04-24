@@ -2,3 +2,5 @@ langchain==0.3.21
 langchain-cohere==0.4.3
 langgraph==0.3.21
 langsmith==0.3.19
+clang==20.1.0
+conda install -c conda-forge clang libclang python-clang

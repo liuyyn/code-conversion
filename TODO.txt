@@ -1,0 +1,13 @@
+-- parser object
+get project/files dependencies 
+get project functionality and function descriptions to LLM used during conversion
+File object to store File data (dependencies, functions description, file path)
+tool to get the mapping of pro*c to python tables ? do we need it tho? could we just provide it in the prompt?
+setup unit tests
+
+extract function definitions 
+extract #include dependencies 
+track global variables 
+build function call graphs
+
+assume that Pro*C code is compiled into c/c++ code with embedded SQL converted into library statements
