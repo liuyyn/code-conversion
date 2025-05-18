@@ -143,15 +143,6 @@ if __name__ == "__main__":
     # invoke the graph 
     graph.invoke({})
 
-    # TODO parser class to parse output
-
-    # TODO tool for reading the content of a file 
-
-    #  [files -> functions] 
-    
-    # [functions -> files]
-    # given the list of functions with their descriptions, ask the LLM to generate a description of the functions
-
 
 
 
